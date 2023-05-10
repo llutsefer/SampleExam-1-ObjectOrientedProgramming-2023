@@ -1,6 +1,22 @@
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        DeathCauseStatistic test = DeathCauseStatistic.fromCsvLine("A04.7          ,758,-,-,-,-,-,1,-,1,3,5,9,12,30,58,64,94,161,192,95,33");
-        System.out.println(test.getCodOfIllness());
+        try {
+            DeathCauseStatisticList.repopulate(Path.of("data/zgony.csv"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ArrayList<DeathCauseStatistic> resultOfMostDeadlyDiseasesTest = DeathCauseStatisticList.mostDeadlyDiseases(25, 5);
+        for (DeathCauseStatistic x:resultOfMostDeadlyDiseasesTest
+             ) {
+                System.out.println(x.getCodOfIllness());
+        }
+        System.out.println(DeathCauseStatisticList.getDeathFromAge(96));
+        System.out.println(DeathCauseStatisticList.getDeathFromAge(0));
+        DeathCauseStatistic.AgeBracketDeaths ageBracketDeathsTest = DeathCauseStatisticList.deathCauseStatisticArrayList.get(0).getAgeBracketDeaths(5);
+        System.out.println(ageBracketDeathsTest.getDeathCount());
     }
 }
