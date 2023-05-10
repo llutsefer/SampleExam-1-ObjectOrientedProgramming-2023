@@ -18,5 +18,9 @@ public class Main {
         System.out.println(DeathCauseStatisticList.getDeathFromAge(0));
         DeathCauseStatistic.AgeBracketDeaths ageBracketDeathsTest = DeathCauseStatisticList.deathCauseStatisticArrayList.get(0).getAgeBracketDeaths(5);
         System.out.println(ageBracketDeathsTest.getDeathCount());
+        ICDCodeTabularOptimizedForTime icdCodeTabularOptimizedForTimeTest = new ICDCodeTabularOptimizedForTime();
+        System.out.println(icdCodeTabularOptimizedForTimeTest.getDescription("S66.0"));
+        ICDCodeTabularOptimizedForMemory icdCodeTabularOptimizedForMemoryTest = new ICDCodeTabularOptimizedForMemory();
+        System.out.println(icdCodeTabularOptimizedForMemoryTest.getDescription("S66.0"));
     }
 }
